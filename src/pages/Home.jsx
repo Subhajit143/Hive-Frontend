@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import CategoryHome from "./CategoryHome";
 import SpbyCategory from "./SpbyCategory";
 import Modal from "./Modal";
+import Banner2 from "./Banner2";
 
 const Home = () => {
   return (
@@ -13,9 +14,9 @@ const Home = () => {
       <Banner />
 
       {/* New Arrival Section */}
-      <Container className="w-screen flex flex-col justify-center items-center px-10">
+      
         <NewArrival />
-      </Container>
+        {/* <Banner2 /> */}
       
       {/* Special By Category Section */}
       <SpbyCategory />

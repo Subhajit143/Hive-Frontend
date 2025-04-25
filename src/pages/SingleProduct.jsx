@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductInfo from './ProductInfo';
+import Container from '../components/Container';
 
 const SingleProduct = () => {
   const [products, setProducts] = useState({});
@@ -35,22 +36,37 @@ const SingleProduct = () => {
   }, [id]);
 
   return (
-    <div className="container grid grid-cols-2 py-10 px-5  gap-10">
+    <Container className="container sm:grid sm:grid-cols-2 sm:py-10 px-5 flex flex-col justify-center  sm:gap-10">
       {/* <h1>Single Product</h1> */}
       <div className=' w-full h-full  group overflow-hidden rounded-md'>
       {products?.imageUrl ? (
        <div className='flex gap-5'>
 
-        <div className='w-1/3 flex flex-col gap-5'>
+        <div className='w-2/3 flex flex-col gap-5'>
+        <img src={products.imageUrl[0]} alt="" className='border border-gray-300 rounded-md'/>
           <img src={products.imageUrl[1]} alt="" className='border border-gray-300 rounded-md'/>
           <img src={products.imageUrl[2]} alt="" className='border border-gray-300 rounded-md'/>
+         
         </div>
         
         
-        <div>
-        <img src={products.imageUrl[0]} 
+        <div className='sm:overflow-y-scroll  flex scroll-m-0'>
+        {/* <img src={products.imageUrl[0]} 
           alt="ProductImage" 
-          className='max-w-full max-h-full object-contain group-hover:scale-105 duration-300' />
+          className='max-w-full max-h-full object-contain group-hover:scale-105 duration-300' /> */}
+
+          <ul className='grid grid-cols-1   sm:h-screen'>
+          {
+            (products.imageUrl).map((item,index)=>(
+              <li key={index}>
+                <img src={item} 
+          alt="ProductImage" 
+          className='max-w-full  max-h-full object-contain group-hover:scale-105 duration-300' />
+              </li>
+            ))
+          }
+          </ul>
+          
         </div>
         
        </div>
@@ -60,8 +76,10 @@ const SingleProduct = () => {
         <p>Loading product details...</p>
       )}
        </div>
-       <ProductInfo product={products} />
-    </div>
+      <div className='sm:px-10 sm:pt-20'>
+      <ProductInfo product={products} />
+      </div>
+    </Container>
   );
 };
 

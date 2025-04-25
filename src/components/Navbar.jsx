@@ -15,7 +15,7 @@ import axios from "axios";
 const Navbar = () => {
   const [product, setProduct] = useState([]);
   const { isLoggedIn, isAdmin } = useAuth();
-  const { products } = useSelector((state) => state.hive.cart);
+  const { cartItems } = useSelector((state) => state.hive);
   const [isOpen, setIsOpen] = useState(false);
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
@@ -44,7 +44,7 @@ const Navbar = () => {
   useEffect(() => {
     formdata();
   }, []);
-  console.log("Products from redux in navbar", products);
+  console.log("Products from redux in navbar", cartItems);
 
   return (
     <>
@@ -142,7 +142,7 @@ const Navbar = () => {
                     <NavLink to={"/Cart"}>
                       <BsCartCheckFill />
                       <span className="absolute -right-2 -top-0 w-4 h-4 rounded-full text-[12px] text-white flex items-center justify-center bg-slate-800">
-                        {products?.length > 0 ? products.length : 0}
+                        {cartItems?.length > 0 ? cartItems.length : 0}
                       </span>
                     </NavLink>
                   </li>
@@ -153,7 +153,7 @@ const Navbar = () => {
                     <NavLink to={"/Cart"}>
                       <BsCartCheckFill />
                       <span className="absolute -right-2 -top-1.5 w-4 h-4 rounded-full text-[12px] text-white flex items-center justify-center bg-slate-800">
-                        {products?.length > 0 ? products.length : 0}
+                        {cartItems?.length > 0 ? cartItems.length : 0}
                       </span>
                     </NavLink>
                   </li>
@@ -219,7 +219,7 @@ const Navbar = () => {
 
       {/* Mobile Navbar */}
       {/* Mobile Navbar */}
-      <div className="md:hidden fixed  w-full bg-white shadow-md z-50">
+      <div className="md:hidden fixed  w-screen bg-white shadow-md z-50">
         <nav className=" flex  items-center">
           <ul className="flex justify-between items-center  w-full gap-12 py-2 px-5 font-semibold">
             {/* Menu Button */}
@@ -237,11 +237,11 @@ const Navbar = () => {
             </li>
 
             {/* Cart Icon */}
-            <li className="text-2xl  flex place-items-center relative pr-7">
+            <li className="text-2xl  flex place-items-center relative pr-1">
               <NavLink to="/Cart" className="relative text-2xl -top-0.5">
                 <BsCartCheckFill />
                 <span className="absolute -right-2 -top-1 w-4 h-4 rounded-full text-[12px] text-white flex items-center justify-center bg-slate-800">
-                  {products?.length > 0 ? products.length : 0}
+                  {cartItems?.length > 0 ? cartItems.length : 0}
                 </span>
               </NavLink>
             </li>

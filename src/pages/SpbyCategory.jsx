@@ -20,9 +20,7 @@ const SpbyCategory = () => {
    <>
     <Container>
     <div>
-        <h1 className='font-semibold text-xl py-5'>
-        Shop by Categoty
-        </h1>
+        
     </div>
     </Container>
     <div className='grid grid-cols-2 sm:grid-cols-4 '>
@@ -30,13 +28,13 @@ const SpbyCategory = () => {
             return(
                 <div key={index} className=''>
                    <NavLink to="/shop" >
-                    <div className='bg-gray-200'>
+                    <div className='bg-'>
                     <img src={item.image} alt={item.title} className='w-full sm:hover:scale-110 transition ease-in-out duration-500 ' />
                     </div>
                    
                    </NavLink>
-                   <button className='flex gap-2 py-5 px-2'>
-                   <p>{item.title}</p>
+                   <button className='flex gap-2 pb-5 px-2'>
+                   <p className='uppercase font-semibold '>{item.title}</p>
                    <FaArrowRightLong className='  pt-1'/>
                    </button>
 

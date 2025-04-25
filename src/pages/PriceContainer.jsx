@@ -4,16 +4,16 @@ import {  useSelector } from 'react-redux';
 
 const PriceContainer = ({item,priceStyle}) => {
         
-  const {products}=useSelector((state)=>state.hive)
+  const {cartItems}=useSelector((state)=>state.hive)
   const [cartProduct,setCartProduct]=useState(null)
 
   useEffect(()=>{
-    const existingProduct= products?.find((product)=>product.id === item.id)
+    const existingProduct= cartItems?.find((product)=>product._id === item._id)
     setCartProduct(existingProduct);
     
-  },[item,products])
+  },[item,cartItems])
 
-  const regularPrice= cartProduct? cartProduct.quantity*item.price :item?.price;
+  const regularPrice= cartProduct ? cartProduct.quantity * item.price : item?.price;
   return (
     <div className='text-lg font-medium'>
         <p className={twMerge(priceStyle)}>₹{regularPrice}</p>

@@ -43,7 +43,7 @@ const NewArrival = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PreviousArrow />,
@@ -52,7 +52,7 @@ const NewArrival = () => {
       {
         breakpoint: 1025,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
         },
@@ -77,7 +77,7 @@ const NewArrival = () => {
   };
 
   return (
-    <div className="w-full py-10 ">
+    <div className="w-full py-10 px-20 ">
       <h1 className='font-semibold sm:text-xl text-lg'>New Arrival</h1>
       <Slider {...settings}>
         {products?.map((item) => (

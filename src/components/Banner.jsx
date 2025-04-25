@@ -7,11 +7,13 @@ import { Link } from "react-router-dom"; // Import Link if navigating to a shop 
 import Banner1 from "../images/b1image.png";
 import Banner2 from "../images/image.png";
 import Banner3 from "../images/image212.png";
+import Banner4 from "../images/imgBanner4.png";
 
 const bannerData = [
   { title: "Keliyan Vintage", image: Banner1 },
   { title: "Live like a queen ", image: Banner2 },
   { title: "Hotest Winter", image: Banner3 },
+  { title: "Coldest Summer", image: Banner4 }
 ];
 
 const Banner = () => {

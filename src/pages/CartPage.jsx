@@ -10,7 +10,7 @@ import { useState } from 'react'
 import Container from '../components/Container'
 
 const CartPage = () => {
-    const {products}=useSelector((state)=>state.hive.cart)
+    const { cartItems } = useSelector((state) => state.hive);
     const dispatch=useDispatch();
     const[subTotalAmt,setSubTotalAmt]=useState("")
     const[discount,setDiscount]=useState("")
@@ -36,7 +36,7 @@ const CartPage = () => {
         <div>
             <h1 className='p-10 text-xl font-bold'>My Cart</h1>
         </div>
-        {products?.length > 0 ? (
+        {cartItems?.length > 0 ? (
             <div className='py-10'>
             <div className='w-full h-20 bg-[#f5f7f7] text-gray-700 hidden lg:grid grid-cols-5 place-content-center px-6 text-lg font-semibold '>
                 <h2 className='col-span-2'>Product</h2>
@@ -45,7 +45,7 @@ const CartPage = () => {
                 <h2>Subtotal</h2>
             </div>
             <div className='mt-5'>
-                {products.map((item)=>(
+                {cartItems.map((item)=>(
                     
                         <CartProduct key={item._id} item={item} />
                     

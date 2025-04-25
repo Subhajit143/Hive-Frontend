@@ -1,26 +1,24 @@
-import {combineReducers, configureStore} from "@reduxjs/toolkit"
-import hiveReducer from "./hiveSlice"
-import { persistStore, persistReducer,FLUSH,REHYDRATE,PAUSE ,PERSIST, PURGE, REGISTER } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-
-const reducers = combineReducers({
-    cart: hiveReducer,
-  });
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import hiveReducer from "./hiveSlice";
 
 const persistConfig = {
-    key: 'root',
-    storage,
-  }
-  const persistedReducer = persistReducer(persistConfig,reducers )
-export const store = configureStore({
-    reducer: {
-        hive: persistedReducer,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-        serializableCheck: {
-            ignoreActions:[FLUSH,REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER]
-        },
-    })
-})
+  key: 'root',
+  storage,
+};
 
-export const persistor = persistStore(store)
+const persistedReducer = persistReducer(persistConfig, hiveReducer);
+
+export const store = configureStore({
+  reducer: {
+    hive: persistedReducer, // This creates state.hive
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+    },
+  })
+});
+
+export const persistor = persistStore(store);
